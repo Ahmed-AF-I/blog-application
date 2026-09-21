@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: localhost/postgres:16
+    container_name: postgres-blog
+    restart:
+      always
+    ports:
+      - "5400:5432"
+    environment:
+      POSTGRESQL_USER: myuser
+      POSTGRESQL_DATABASE: mydatabase
+      POSTGRESQL_PASSWORD: mysecretpassword
+    networks:
+      - backend-net
+
+  #      database management interface
+  adminer:
+    image: docker.io/library/adminer:latest
+    container_name: blog_adminer
+    restart: always
+    ports:
+      - "8888:8080"
+    networks:
+      - backend-net
+
+networks:
+  backend-net:
+    driver: bridge
