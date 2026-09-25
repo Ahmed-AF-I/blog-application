@@ -1,7 +1,8 @@
-package dev.ahmed.blog.services;
+package dev.ahmed.blog.services.impl;
 
 import dev.ahmed.blog.domain.entities.Category;
 import dev.ahmed.blog.repositories.CategoryRepository;
+import dev.ahmed.blog.services.CategoryServices;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +13,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class CategoryServiceImpl implements CategoryServices{
+public class CategoryServiceImpl implements CategoryServices {
 
     private final CategoryRepository categoryRepository;
 

@@ -19,3 +19,5 @@ spring:
     virtual:
       enabled: true
 
+jwt:
+  secret: your-256-bit-secret-key-here-make-it-at-least-32-bytes-long
