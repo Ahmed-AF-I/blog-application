@@ -5,8 +5,7 @@ import lombok.Builder;
 import java.util.UUID;
 
 @Builder
-public record TagResponse (
+public record AuthorDto(
         UUID id,
-        String name,
-        Integer postCount
-){}
+        String name
+) {}

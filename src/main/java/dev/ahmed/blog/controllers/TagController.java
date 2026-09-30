@@ -1,8 +1,7 @@
 package dev.ahmed.blog.controllers;
 
 import dev.ahmed.blog.domain.dtos.CreateTagsRequest;
-import dev.ahmed.blog.domain.dtos.TagResponse;
-import dev.ahmed.blog.domain.entities.Tag;
+import dev.ahmed.blog.domain.dtos.TagDto;
 import dev.ahmed.blog.mappers.TagMapper;
 import dev.ahmed.blog.services.TagService;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +21,7 @@ public class TagController {
     private final TagMapper tagMapper;
 
     @GetMapping
-    public ResponseEntity<List<TagResponse>> getAllTags() {
+    public ResponseEntity<List<TagDto>> getAllTags() {
         var tags = tagService.getTags();
         var tagResponses = tags.stream()
                 .map(tagMapper::toTagResponse)
@@ -31,7 +30,7 @@ public class TagController {
     }
 
     @PostMapping
-    public ResponseEntity<List<TagResponse>> createTags(
+    public ResponseEntity<List<TagDto>> createTags(
             @RequestBody CreateTagsRequest createTagsRequest
     ) {
         var savedTags = tagService.createTags(createTagsRequest.names());
