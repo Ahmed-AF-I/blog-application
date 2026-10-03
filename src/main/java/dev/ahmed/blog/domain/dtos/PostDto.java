@@ -18,6 +18,6 @@ public record PostDto(
         Integer readingTime,
         LocalDateTime createdAt,
         LocalDateTime updatedAt,
-        PostStatus postStatus
+        PostStatus status
 
 ) {}
