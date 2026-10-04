@@ -38,7 +38,7 @@ public class ErrorController {
 
     @ExceptionHandler(IllegalStateException.class)
     public ResponseEntity<ApiErrorResponse> handleIllegalStateException(
-            IllegalArgumentException ex
+            IllegalStateException ex
     ) {
         ApiErrorResponse error = ApiErrorResponse.builder()
                 .status(HttpStatus.CONFLICT.value())
@@ -60,7 +60,7 @@ public class ErrorController {
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<ApiErrorResponse> handleEntityNotFoundException(
-            BadCredentialsException ex
+            EntityNotFoundException ex
     ) {
         ApiErrorResponse error = ApiErrorResponse.builder()
                 .status(HttpStatus.NOT_FOUND.value())
