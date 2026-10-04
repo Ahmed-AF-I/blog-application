@@ -1,5 +1,6 @@
 package dev.ahmed.blog.services;
 
+import dev.ahmed.blog.domain.UpdateCategoryRequest;
 import dev.ahmed.blog.domain.entities.Category;
 
 import java.util.List;
@@ -10,4 +11,5 @@ public interface CategoryServices {
     Category createCategory(Category category);
     void deleteCategory(UUID id);
     Category getCategoryById(UUID id);
+    Category updateCategory(UUID id, UpdateCategoryRequest updateCategoryRequest);
 }

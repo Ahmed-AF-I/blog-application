@@ -1,8 +1,10 @@
 package dev.ahmed.blog.mappers;
 
 import dev.ahmed.blog.domain.PostStatus;
+import dev.ahmed.blog.domain.UpdateCategoryRequest;
 import dev.ahmed.blog.domain.dtos.CategoryDto;
 import dev.ahmed.blog.domain.dtos.CreateCategoryRequest;
+import dev.ahmed.blog.domain.dtos.UpdateCategoryRequestDto;
 import dev.ahmed.blog.domain.entities.Category;
 import dev.ahmed.blog.domain.entities.Post;
 import org.mapstruct.Mapper;
@@ -19,6 +21,8 @@ public interface CategoryMapper {
     CategoryDto toDto(Category category);
 
     Category toEntity(CreateCategoryRequest createCategoryRequest);
+
+    UpdateCategoryRequest toUpdateRequest(UpdateCategoryRequestDto updateCategoryRequestDto);
 
     @Named("calculatePostCount")
     default long calculatePostCount(List<Post> posts) {

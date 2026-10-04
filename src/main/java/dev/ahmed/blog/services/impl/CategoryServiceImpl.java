@@ -1,5 +1,6 @@
 package dev.ahmed.blog.services.impl;
 
+import dev.ahmed.blog.domain.UpdateCategoryRequest;
 import dev.ahmed.blog.domain.entities.Category;
 import dev.ahmed.blog.repositories.CategoryRepository;
 import dev.ahmed.blog.services.CategoryServices;
@@ -51,5 +52,13 @@ public class CategoryServiceImpl implements CategoryServices {
     public Category getCategoryById(UUID id) {
         return categoryRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Category with id " + id + " not found"));
+    }
+
+    @Override
+    @Transactional
+    public Category updateCategory(UUID id, UpdateCategoryRequest updateCategoryRequest) {
+        var existingCategory = getCategoryById(id);
+        existingCategory.setName(updateCategoryRequest.name());
+        return categoryRepository.save(existingCategory);
     }
 }

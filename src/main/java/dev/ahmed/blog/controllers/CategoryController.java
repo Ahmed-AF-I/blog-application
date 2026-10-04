@@ -1,7 +1,9 @@
 package dev.ahmed.blog.controllers;
 
+import dev.ahmed.blog.domain.UpdateCategoryRequest;
 import dev.ahmed.blog.domain.dtos.CategoryDto;
 import dev.ahmed.blog.domain.dtos.CreateCategoryRequest;
+import dev.ahmed.blog.domain.dtos.UpdateCategoryRequestDto;
 import dev.ahmed.blog.domain.entities.Category;
 import dev.ahmed.blog.mappers.CategoryMapper;
 import dev.ahmed.blog.services.CategoryServices;
@@ -42,6 +44,17 @@ public class CategoryController {
                 categoryMapper.toDto(savedCategory),
                 HttpStatus.CREATED
         );
+    }
+
+    @PutMapping(path = "/{id}")
+    public ResponseEntity<CategoryDto> updateCategory(
+            @PathVariable UUID id,
+            @Valid @RequestBody UpdateCategoryRequestDto updateCategoryRequestDto
+    ){
+        UpdateCategoryRequest updateCategoryRequest = categoryMapper.toUpdateRequest(updateCategoryRequestDto);
+        Category updateCategory = categoryServices.updateCategory(id, updateCategoryRequest);
+        CategoryDto updatePostDto = categoryMapper.toDto(updateCategory);
+        return ResponseEntity.ok(updatePostDto);
     }
 
 
