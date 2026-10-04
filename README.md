@@ -145,4 +145,7 @@ Important configuration includes:
 
 ## License
 
-This project does not currently declare a license in the repository metadata.
+This project is licensed under the MIT License.
+See the [LICENSE](LICENSE) file for details.
+
+Created by Ahmed.
